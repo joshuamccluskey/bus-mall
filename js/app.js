@@ -142,9 +142,9 @@ function handleItemClicks(e) {
 
 // Listener for the click event on button to show results
 function handleButtonClicks(e) {
+  e.target.buttonResults;
   // Display all the results for click with number of click, views and the percentage it was clicked when it was viewed.
   let results = document.getElementById('results');
-
   if (likes === ROUNDS){
     for (let i = 0; i < imgArr[i].legnth; i++) {
       let li = document.createElement('li');
