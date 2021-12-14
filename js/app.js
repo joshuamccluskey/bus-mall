@@ -21,7 +21,7 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 
 //Get the button
-let buttonResults = document.getElementById('button');
+let viewResults = document.getElementById('view-results');
 
 
 
@@ -85,18 +85,24 @@ function randomGenerator() {
 
 function render() {
 
-  let itemOne = randomGenerator();
-  let itemTwo = randomGenerator();
-  let itemThree = randomGenerator();
+  let newNumArr = [];
 
-
+  // let itemOne = randomGenerator();
+  // let itemTwo = randomGenerator();
+  // let itemThree = randomGenerator();
 
   // Validation function to make sure images are not the same
-  while (itemOne === itemTwo && itemThree) {
-    itemOne = randomGenerator();
-    itemTwo = randomGenerator();
-    itemThree = randomGenerator();
+  // Credit: Audrey Patterson's Solution shown during code review for getting three different numbers with no repeats.
+  while (newNumArr.length < 3) {
+    let newNum = randomGenerator();
+    while(!newNumArr.includes(newNum)){
+      newNumArr.push(newNum);
+    }
   }
+
+  let itemOne = newNumArr[0];
+  let itemTwo = newNumArr[1];
+  let itemThree = newNumArr[2];
 
 
   imgOne.src = imgArr[itemOne].src;
@@ -122,12 +128,11 @@ render();
 function handleItemClicks(e) {
   likes++;
   let itemClicked = e.target.alt;
-
   console.log(itemClicked);
-  for (let i = 0; i < imgArr.length; i++) {
 
+  for (let i = 0; i < imgArr.length; i++) {
     if (itemClicked === imgArr[i].name) {
-      imgArr[i].likes++;
+      imgArr[i].clicks++;
     }
   }
   //Need to rerender images
@@ -141,20 +146,24 @@ function handleItemClicks(e) {
 }
 
 // Listener for the click event on button to show results
-function handleButtonClicks(e) {
-  e.target.buttonResults;
+function handleButtonClicks() {
   // Display all the results for click with number of click, views and the percentage it was clicked when it was viewed.
-  let results = document.getElementById('results');
-  if (likes === ROUNDS){
-    for (let i = 0; i < imgArr[i].legnth; i++) {
+  let seeResults = document.getElementById('see-results');
+  if (likes === ROUNDS) {
+    for (let i = 0; i < imgArr.length; i++) {
       let li = document.createElement('li');
-      li.textContent = `${imgArr[i].name} viewed ${imgArr[i].views} times and liked ${imgArr[i].clicks} times.`;
-      results.appendChild(li);
+      li.textContent = `${imgArr[i].name} viewed ${imgArr[i].views} times and liked ${imgArr[i].clicks} times`;
+      seeResults.appendChild(li);
     }
   }
 }
+
 mainCanvas.addEventListener('click', handleItemClicks);
-buttonResults.addEventListener('click', handleButtonClicks);
+
+
+viewResults.addEventListener('click', handleButtonClicks);
+
+
 
 // Add a button with the text View Results, which when clicked displays the list of all the products followed by the votes received, and number of times seen for each. Example: banana had 3 votes, and was seen 5 times.
 
