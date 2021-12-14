@@ -1,21 +1,23 @@
 body {
-  background: aquamarine;
+  background: #EB857C;
 }
 
 header {
-  background: chartreuse;
+  background: #346B9E;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 5em;
   text-align: center;
   padding: 30px;
+  font-family: 'Luckiest Guy', cursive;
+  color: #DEEB4D;
 }
 
 #canvas {
   display: flex;
   width: 80%;
-  background-color: cadetblue;
+  background-color: #346B9E;
   margin: 30px auto 30px auto;
   text-align: center;
   justify-content: space-around;
@@ -24,18 +26,34 @@ h1 {
 #canvas img {
   width: 300px;
   height: 300px;
-  border: 2px solid black;
+  border: 2px solid #346B9E;
   margin: 30px auto 30px auto;
 }
 
 main div {
   padding: 20px;
   width: max-content;
-  background: cadetblue;
+  background: #346B9E;
   border: 3px solid black;
   border-radius: 5px;
   margin: auto;
+  font-family: 'Luckiest Guy', cursive;
+  color: #DEEB4D;
   
+}
+main ul {
+  background-color: #346B9E ;
+  text-align: center;
+
+}
+main li:first-child {
+  margin-top: 30px;
+}
+
+main li {
+  font-family: 'Luckiest Guy', cursive;
+  letter-spacing: 2px;
+  color: #DEEB4D;
 }
 
 footer {
@@ -44,4 +62,6 @@ footer {
   text-align: center;
   justify-content: space-around;
   width: 80%;
+  font-family: 'Luckiest Guy', cursive;
+  color: #DEEB4D;
 }
