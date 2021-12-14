@@ -1,54 +1,161 @@
+'use strict';
 
-console.log("hello world!")
+console.log('hello world!');
 
-//Gloabl variables to be used
+//Global variables to be used
+const imgArr = [];
 
+
+// Global counter for rounds
 let ROUNDS = 25;
+
+//Global Window into the DOM Canvas
+let mainCanvas = document.getElementById('canvas');
+
+//Global to count clicks
+let likes = 0;
+
+//Global window into the DOM for images to be rendered in main
+let imgOne = document.getElementById('img-one');
+let imgTwo = document.getElementById('img-two');
+let imgThree = document.getElementById('img-three');
+
+//Get the button
+let buttonResults = document.getElementById('button');
+
+
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
-// Create a constructor function that creates an object associated with each product, and has the following properties:
+//Functions:
+// Constructor function that creates an object associated with each product, and has the following properties:
 // Name of the product
-// File path of image
+// File path of image defaulted extension to jpg
 // Times the image has been shown
 // Create an algorithm that will randomly generate three unique product images from the images directory and display them side-by-side-by-side in the browser window.
 
-function Items (name, ext){
+function Item(name, ext = 'jpg') {
   this.name = name;
   this.ext = ext;
+  this.src = `img/${name}.${ext}`;
   this.views = 0;
-  this.ckicks = 0;
+  this.clicks = 0;
+  imgArr.push(this);
 
 }
 
-// For each of the three images, increment its property of times it has been shown by one.
+//Instantiating each new instance of the object
 
-// Attach an event listener to the section of the HTML page where the images are going to be displayed.
+new Item('bag');
+new Item('banana');
+new Item('bathroom');
+new Item('boots');
+new Item('breakfast');
+new Item('bubblegum');
+new Item('chair');
+new Item('cthulhu');
+new Item('dog-duck');
+new Item('dragon');
+new Item('pen');
+new Item('pet-sweep');
+new Item('scissors');
+new Item('shark');
+new Item('sweep', 'png');
+new Item('tauntaun');
+new Item('unicorn');
+new Item('water-can');
+new Item('wine-glass');
 
-// Once the users ‘clicks’ a product, generate three new products for the user to pick from.
-// As a user, I would like to track the selections made by viewers so that I can determine which products to keep for the catalog.
-// In the constructor function define a property to hold the number of times a product has been clicked.
 
-// After every selection by the viewer, update the newly added property to reflect if it was clicked.
 
-// As a user, I would like to control the number of rounds a user is presented with so that I can control the voting session duration.
-// By default, the user should be presented with 25 rounds of voting before ending the session.
-// Keep the number of rounds in a variable to allow the number to be easily changed for debugging and testing purposes.
-// As a user, I would like to view a report of results after all rounds of voting have concluded so that I can evaluate which products were the most popular.
-// Create a property attached to the constructor function itself that keeps track of all the products that are currently being considered.
 
-// After voting rounds have been completed, remove the event listeners on the product.
+//Random number generator helper function
+
+function randomGenerator() {
+  return Math.floor(Math.random() * imgArr.length); //The maximum is exclusive and the minimum is inclusive
+}
+
+
+
+// For each of the three images, increment its property of times it has been shown by one. Build while loop
+
+// change img src and alt
+//Render function for the images
+
+
+function render() {
+
+  let itemOne = randomGenerator();
+  let itemTwo = randomGenerator();
+  let itemThree = randomGenerator();
+
+
+
+  // Validation function to make sure images are not the same
+  while (itemOne === itemTwo && itemThree) {
+    itemOne = randomGenerator();
+    itemTwo = randomGenerator();
+    itemThree = randomGenerator();
+  }
+
+
+  imgOne.src = imgArr[itemOne].src;
+  imgOne.alt = imgArr[itemOne].name;
+  imgArr[itemOne].views++;
+
+  imgTwo.src = imgArr[itemTwo].src;
+  imgTwo.alt = imgArr[itemTwo].name;
+  imgArr[itemTwo].views++;
+
+  imgThree.src = imgArr[itemThree].src;
+  imgThree.alt = imgArr[itemThree].name;
+  imgArr[itemThree].views++;
+}
+
+render();
+
+//Stop the clicking when reach 25
+
+
+//Handler function to take care of the clicks
+
+function handleItemClicks(e) {
+  likes++;
+  let itemClicked = e.target.alt;
+
+  console.log(itemClicked);
+  for (let i = 0; i < imgArr.length; i++) {
+
+    if (itemClicked === imgArr[i].name) {
+      imgArr[i].likes++;
+    }
+  }
+  //Need to rerender images
+  render();
+
+  //Stop the clicks once it reaches 25
+  if (likes === ROUNDS) {
+    mainCanvas.removeEventListener('click', handleItemClicks);
+  }
+
+}
+
+// Listener for the click event on button to show results
+function handleButtonClicks(e) {
+  // Display all the results for click with number of click, views and the percentage it was clicked when it was viewed.
+  let results = document.getElementById('results');
+
+  if (likes === ROUNDS){
+    for (let i = 0; i < imgArr[i].legnth; i++) {
+      let li = document.createElement('li');
+      li.textContent = `${imgArr[i].name} viewed ${imgArr[i].views} times and liked ${imgArr[i].clicks} times.`;
+      results.appendChild(li);
+    }
+  }
+}
+mainCanvas.addEventListener('click', handleItemClicks);
+buttonResults.addEventListener('click', handleButtonClicks);
 
 // Add a button with the text View Results, which when clicked displays the list of all the products followed by the votes received, and number of times seen for each. Example: banana had 3 votes, and was seen 5 times.
 
 // NOTE: Displayed product names should match the file name for the product. Example: the product represented with dog-duck.jpg should be displayed to the user as exactly “dog-duck” when the results are shown.
-
-// Stretch Goals
-// Handle the display and voting for an arbitrary number of images
-// Using a variable, declare in your JS how many images to show.
-// Based on that value, dynamically create that many <img> tags
-// Also based on that value, ensure that your randomizer is properly handling the specified number of images for display and repeat tracking.
-// Resources
-// The assets for this lab can be found in your class11/lab/assets folder of your daily class repo.
-
-// Provided in your class repo is a suggested wireframe to follow while building out your BusMall application.
