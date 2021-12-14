@@ -6,16 +6,34 @@ Bus mall lab for Code Fellows
 
 Build an app to test which items customers click on the most when given a choice of three items. They can only have 25 rounds for clicking. The results must show the number of clicks per image and how times it was viewed.
 
-### Bus Mall
+### Author Joshua McCluskey
 
-An app to see which products cutomers like to then use in a catalog for bus mall.
+### Credit
 
-### Author: Joshua McCluskey
+ Audrey Patterson's solution was used for generating three different random number demonstrated during code review.
 
-#### Links and Resources: N/A
+#### Links and Resources
 
-### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/3"
+"https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
 
-#### Reflections and Comments:
+### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/5"
+
+#### Reflections and Comments
 
 I found this lab to be difficult in trying to figure out how to generate 3 different random numbers. I tried numerous of nested loop conditions to see if I could figure out how to get three unique number, but as soon as I change one I fall into this logical trap that I spent too much time trying to figure out. Overall, I thought this exercise took longer trying to figure out the three random number problem.
+
+## LAB - 12 Chart
+
+Build a bar chart to display to easily display the data for clicks and views of the items. Also eliminate bias in test by not showing same images in the next step shown to the user.
+
+### Author Joshua McCluskey
+
+#### Links and Resources
+
+"https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+
+### submission PR: "TBD"
+
+#### Reflections and comments
+
+Tbd
