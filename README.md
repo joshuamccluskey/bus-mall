@@ -18,4 +18,4 @@ An app to see which products cutomers like to then use in a catalog for bus mall
 
 #### Reflections and Comments:
 
-I found this lab to be difficult in trying to figure out how to generrate 3 different random numbers. I tried numerous of neseted loop conditions to see if I could figure out how to get three unque number, but as soon as I change one I fall into this logical trap that I spent too much time trying to figure out. Overall, I thought this excercise took longer tryting to figure out the three random number problem.
+I found this lab to be difficult in trying to figure out how to generate 3 different random numbers. I tried numerous of nested loop conditions to see if I could figure out how to get three unique number, but as soon as I change one I fall into this logical trap that I spent too much time trying to figure out. Overall, I thought this exercise took longer trying to figure out the three random number problem.

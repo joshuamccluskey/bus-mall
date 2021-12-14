@@ -28,13 +28,13 @@ h1 {
   margin: 30px auto 30px auto;
 }
 
-#buttonResults {
+main div {
+  padding: 20px;
+  width: max-content;
   background: cadetblue;
   border: 3px solid black;
-  border-radius: 15px;
-  justify-content: space-between;
-  width: fit-content;
-  margin: 25px auto;
+  border-radius: 5px;
+  margin: auto;
   
 }
 
