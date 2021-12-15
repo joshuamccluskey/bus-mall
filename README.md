@@ -32,7 +32,7 @@ Build a bar chart to display to easily display the data for clicks and views of 
 
 "https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
 
-### submission PR: "TBD"
+### submission PR: "[WIP](https://github.com/joshuamccluskey/bus-mall/pull/6)"
 
 #### Reflections and comments
 

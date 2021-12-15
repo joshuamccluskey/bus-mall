@@ -141,10 +141,12 @@ function renderChart() {
   //label arrays for the chart
   let itemNames = [];
   let itemClicks = [];
+  let itemViews = [];
   for (let i = 0; i < imgArr.length; i++) {
 
     itemNames.push(imgArr[i].name);
     itemClicks.push(imgArr[i].clicks);
+    itemViews.push(imgArr[i].views);
   }
 
   const chart = new Chart(ctx, {
@@ -152,24 +154,17 @@ function renderChart() {
     data: {
       labels: itemNames,
       datasets: [{
-        label: '# of Votes',
+        label: '# of clicks',
         data: itemClicks,
-        backgroundColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
+        backgroundColor: '#DEEB4D',
+        borderColor: '#DEEB4D',
+        borderWidth: 1
+      },
+      {
+        label: '# of views',
+        data: itemViews,
+        backgroundColor:'#346B9E',
+        borderColor:'#346B9E',
         borderWidth: 1
       }]
     },
@@ -185,14 +180,8 @@ function renderChart() {
 
 // Listener for the click event on button to show results
 function handleButtonClicks() {
-  // Display all the results for click with number of click, views and the percentage it was clicked when it was viewed.
-  let seeResults = document.getElementById('see-results');
+
   if (likes === ROUNDS) {
-    for (let i = 0; i < imgArr.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${imgArr[i].name} viewed ${imgArr[i].views} times and liked ${imgArr[i].clicks} times`;
-      seeResults.appendChild(li);
-    }
     renderChart();
   }
 }
