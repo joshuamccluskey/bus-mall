@@ -3,7 +3,7 @@
 console.log('hello world!');
 
 //Global variables to be used
-const imgArr = [];
+let imgArr = [];
 
 
 // Global counter for rounds
@@ -40,28 +40,37 @@ function Item(name, ext = 'jpg') {
   imgArr.push(this);
 
 }
+// Get the items to
+let retrievedItem = localStorage.getItem('catalogItems');
 
-//Instantiating each new instance of the object
 
-new Item('bag');
-new Item('banana');
-new Item('bathroom');
-new Item('boots');
-new Item('breakfast');
-new Item('bubblegum');
-new Item('chair');
-new Item('cthulhu');
-new Item('dog-duck');
-new Item('dragon');
-new Item('pen');
-new Item('pet-sweep');
-new Item('scissors');
-new Item('shark');
-new Item('sweep', 'png');
-new Item('tauntaun');
-new Item('unicorn');
-new Item('water-can');
-new Item('wine-glass');
+//If data in local storage, get it.
+if (retrievedItem) {
+  let parsedItem = JSON.parse(retrievedItem);
+  imgArr = parsedItem;
+} else {
+  //Instantiating each new instance of the object
+  new Item('bag');
+  new Item('banana');
+  new Item('bathroom');
+  new Item('boots');
+  new Item('breakfast');
+  new Item('bubblegum');
+  new Item('chair');
+  new Item('cthulhu');
+  new Item('dog-duck');
+  new Item('dragon');
+  new Item('pen');
+  new Item('pet-sweep');
+  new Item('scissors');
+  new Item('shark');
+  new Item('sweep', 'png');
+  new Item('tauntaun');
+  new Item('unicorn');
+  new Item('water-can');
+  new Item('wine-glass');
+
+}
 
 //Random number generator helper function
 
@@ -86,33 +95,6 @@ function render() {
   let itemOne = newNumArr.pop();
   let itemTwo = newNumArr.pop();
   let itemThree = newNumArr.pop();
-  console.log(newNumArr);
-  // newNumArr.forEach(function(num) {
-  //   console.log(num);
-  //   if (num === itemOne){
-  //     imgArr.shift(itemOne);
-  //   } else if (num === itemTwo) {
-  //     imgArr.shift(itemTwo);
-  //   } else if (num === itemThree) {
-  //     imgArr.shift(itemThree);
-  //   }
-
-  // });
-
-
-  // for (let i = 0; i < newNumArr.length;) {
-  //   if (i === itemOne){
-  //     imgArr.splice(itemOne);
-  //   } else if (i === itemTwo) {
-  //     imgArr.splice(itemTwo);
-  //   } else if (i === itemThree) {
-  //     imgArr.splice(itemThree);
-  //   }
-
-  //   console.log(imgArr);
-
-  // }
-
 
   imgOne.src = imgArr[itemOne].src;
   imgOne.alt = imgArr[itemOne].name;
@@ -129,11 +111,8 @@ function render() {
 
 render();
 
-//Stop the clicking when reach 25
-
 
 //Handler function to take care of the clicks
-
 function handleItemClicks(e) {
   likes++;
   let itemClicked = e.target.alt;
@@ -150,12 +129,19 @@ function handleItemClicks(e) {
   //Stop the clicks once it reaches 25
   if (likes === ROUNDS) {
     mainCanvas.removeEventListener('click', handleItemClicks);
+
+    //Stingify the properties to be stored in local storage
+    let stringifiedItem = JSON.stringify(imgArr);
+
+    //Save to local storage
+    localStorage.setItem('catalogItems', stringifiedItem);
+
   }
+
 
 }
 
 //  Render chart function creates a bar chart after rounds are complete
-
 function renderChart() {
   const ctx = document.getElementById('chart').getContext('2d');
   //label arrays for the chart
@@ -182,8 +168,8 @@ function renderChart() {
       {
         label: '# of views',
         data: itemViews,
-        backgroundColor:'#346B9E',
-        borderColor:'#346B9E',
+        backgroundColor: '#346B9E',
+        borderColor: '#346B9E',
         borderWidth: 1
       }]
     },
@@ -195,6 +181,7 @@ function renderChart() {
       }
     }
   });
+
 }
 
 // Listener for the click event on button to show results
@@ -204,6 +191,8 @@ function handleButtonClicks() {
     renderChart();
   }
 }
+
+
 
 //Event listeners for clicks:
 mainCanvas.addEventListener('click', handleItemClicks);
