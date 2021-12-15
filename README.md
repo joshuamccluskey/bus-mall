@@ -37,3 +37,19 @@ Build a bar chart to display to easily display the data for clicks and views of 
 #### Reflections and comments
 
 Trying figure out the bias problem is leading me down logical rabbit holes trying to figure out the best order to use array methods. Overall, this problem feels very similar to yesterday's problem trying to generate three different number. I tried to use a for each loop, but I ended up emptying out my array. I definitely need to come back with a fresh view to approach the solution and figure out a better solution.
+
+## LAB - 13 Local Storage
+
+Build a bar chart to display to easily display the data for clicks and views of the items. Also eliminate bias in test by not showing same images in the next step shown to the user.
+
+### Author Joshua C McCluskey
+
+#### Links & Resources
+
+"https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+
+### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/8"
+
+#### Reflections and comments
+
+Trying figure out the bias problem is leading me down logical rabbit holes trying to figure out the best order to use array methods. Overall, this problem feels very similar to yesterday's problem trying to generate three different number. I tried to use a for each loop, but I ended up emptying out my array. I definitely need to come back with a fresh view to approach the solution and figure out a better solution.
