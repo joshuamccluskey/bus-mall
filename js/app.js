@@ -76,10 +76,6 @@ function render() {
 
   let newNumArr = [];
 
-  // let itemOne = randomGenerator();
-  // let itemTwo = randomGenerator();
-  // let itemThree = randomGenerator();
-
   // Validation function to make sure images are not the same
   // Credit: Audrey Patterson's Solution shown during code review for getting three different numbers with no repeats.
   while (newNumArr.length < 3) {
@@ -89,9 +85,36 @@ function render() {
     }
   }
 
+
   let itemOne = newNumArr[0];
   let itemTwo = newNumArr[1];
   let itemThree = newNumArr[2];
+
+  // newNumArr.forEach(function(num) {
+  //   console.log(num);
+  //   if (num === itemOne){
+  //     imgArr.shift(itemOne);
+  //   } else if (num === itemTwo) {
+  //     imgArr.shift(itemTwo);
+  //   } else if (num === itemThree) {
+  //     imgArr.shift(itemThree);
+  //   }
+
+  // });
+
+
+  // for (let i = 0; i < newNumArr.length;) {
+  //   if (i === itemOne){
+  //     imgArr.splice(itemOne);
+  //   } else if (i === itemTwo) {
+  //     imgArr.splice(itemTwo);
+  //   } else if (i === itemThree) {
+  //     imgArr.splice(itemThree);
+  //   }
+
+  //   console.log(imgArr);
+
+  // }
 
 
   imgOne.src = imgArr[itemOne].src;
@@ -143,7 +166,6 @@ function renderChart() {
   let itemClicks = [];
   let itemViews = [];
   for (let i = 0; i < imgArr.length; i++) {
-
     itemNames.push(imgArr[i].name);
     itemClicks.push(imgArr[i].clicks);
     itemViews.push(imgArr[i].views);
