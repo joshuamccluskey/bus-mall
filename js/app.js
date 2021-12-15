@@ -23,8 +23,8 @@ let imgThree = document.getElementById('img-three');
 //Get the button
 let viewResults = document.getElementById('view-results');
 
-//Arrays for our foreach method to retrieve object properties
-
+//Global array for our foreach method to retrieve object properties
+let newNumArr = [];
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
@@ -73,23 +73,20 @@ function randomGenerator() {
 //Render function for the images
 
 function render() {
-
-  let newNumArr = [];
-
   // Validation function to make sure images are not the same
-  // Credit: Audrey Patterson's Solution shown during code review for getting three different numbers with no repeats.
-  while (newNumArr.length < 3) {
+  // Credit: Audrey Patterson's Solution shown during code review for getting three different numbers with no repeats. Credit: Regan Hayes queue array idea from  code review, but instead I built my queue to do the inverse: Adds new numbers to the front of the array and pops the last part of the array.
+  while (newNumArr.length < 6) {
     let newNum = randomGenerator();
     while (!newNumArr.includes(newNum)) {
-      newNumArr.push(newNum);
+      newNumArr.unshift(newNum);
     }
   }
 
 
-  let itemOne = newNumArr[0];
-  let itemTwo = newNumArr[1];
-  let itemThree = newNumArr[2];
-
+  let itemOne = newNumArr.pop();
+  let itemTwo = newNumArr.pop();
+  let itemThree = newNumArr.pop();
+  console.log(newNumArr);
   // newNumArr.forEach(function(num) {
   //   console.log(num);
   //   if (num === itemOne){

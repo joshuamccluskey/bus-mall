@@ -26,13 +26,13 @@ I found this lab to be difficult in trying to figure out how to generate 3 diffe
 
 Build a bar chart to display to easily display the data for clicks and views of the items. Also eliminate bias in test by not showing same images in the next step shown to the user.
 
-### Author Joshua McCluskey
+### Author: Joshua McCluskey
 
-#### Links and Resources
+#### Links And Resources
 
 "https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
 
-### submission PR: "[WIP](https://github.com/joshuamccluskey/bus-mall/pull/6)"
+### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/8"
 
 #### Reflections and comments
 
