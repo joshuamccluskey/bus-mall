@@ -40,7 +40,7 @@ Trying figure out the bias problem is leading me down logical rabbit holes tryin
 
 ## LAB - 13 Local Storage
 
-Build a bar chart to display to easily display the data for clicks and views of the items. Also eliminate bias in test by not showing same images in the next step shown to the user.
+Connect the site to local storage, and make sure the data presists through multiple rounds each time the browser resets.
 
 ### Author Joshua C McCluskey
 
@@ -48,8 +48,8 @@ Build a bar chart to display to easily display the data for clicks and views of 
 
 "https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
 
-### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/8"
+### submission PR: "https://github.com/joshuamccluskey/bus-mall/pull/9"
 
 #### Reflections and comments
 
-Trying figure out the bias problem is leading me down logical rabbit holes trying to figure out the best order to use array methods. Overall, this problem feels very similar to yesterday's problem trying to generate three different number. I tried to use a for each loop, but I ended up emptying out my array. I definitely need to come back with a fresh view to approach the solution and figure out a better solution.
+At first I thought it would go a lot faster to complete, but I ran into issues. I found that if you use simple variable names there is a high possibility that there is a chance its used within a method. After spending more than an hour troubleshooting why my data didn't persist, I went and changed my variable names again to be more unique, and it worked -- a lessoned learned. Overall, it was the easiest lab we've had this week.
