@@ -52,4 +52,4 @@ Connect the site to local storage, and make sure the data presists through multi
 
 #### Reflections and comments
 
-At first I thought it would go a lot faster to complete, but I ran into issues. I found that if you use simple variable names there is a high possibility that there is a chance its used within a method. After spending more than an hour troubleshooting why my data didn't presist, I went and changed my variable names again to be more unique, and it worked -- a lessoned learned. Overall, it was the easiest lab we've had this week.
+At first I thought it would go a lot faster to complete, but I ran into issues. I found that if you use simple variable names there is a high possibility that there is a chance its used within a method. After spending more than an hour troubleshooting why my data didn't persist, I went and changed my variable names again to be more unique, and it worked -- a lessoned learned. Overall, it was the easiest lab we've had this week.
