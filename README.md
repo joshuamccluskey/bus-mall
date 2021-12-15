@@ -36,4 +36,4 @@ Build a bar chart to display to easily display the data for clicks and views of 
 
 #### Reflections and comments
 
-Tbd
+Trying figure out the bias problem is leading me down logical rabbit holes trying to figure out the best order to use array methods. Overall, this problem feels very similar to yesterday's problem trying to generate three different number. I tried to use a for each loop, but I ended up emptying out my array. I definitely need to come back with a fresh view to approach the solution and figure out a better solution.
