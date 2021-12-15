@@ -23,16 +23,13 @@ let imgThree = document.getElementById('img-three');
 //Get the button
 let viewResults = document.getElementById('view-results');
 
+//Arrays for our foreach method to retrieve object properties
 
 
 // As a user, I would like to display three unique products by chance so that the viewers can pick a favorite.
 
 //Functions:
 // Constructor function that creates an object associated with each product, and has the following properties:
-// Name of the product
-// File path of image defaulted extension to jpg
-// Times the image has been shown
-// Create an algorithm that will randomly generate three unique product images from the images directory and display them side-by-side-by-side in the browser window.
 
 function Item(name, ext = 'jpg') {
   this.name = name;
@@ -66,9 +63,6 @@ new Item('unicorn');
 new Item('water-can');
 new Item('wine-glass');
 
-
-
-
 //Random number generator helper function
 
 function randomGenerator() {
@@ -76,12 +70,7 @@ function randomGenerator() {
 }
 
 
-
-// For each of the three images, increment its property of times it has been shown by one. Build while loop
-
-// change img src and alt
 //Render function for the images
-
 
 function render() {
 
@@ -95,7 +84,7 @@ function render() {
   // Credit: Audrey Patterson's Solution shown during code review for getting three different numbers with no repeats.
   while (newNumArr.length < 3) {
     let newNum = randomGenerator();
-    while(!newNumArr.includes(newNum)){
+    while (!newNumArr.includes(newNum)) {
       newNumArr.push(newNum);
     }
   }
@@ -145,26 +134,58 @@ function handleItemClicks(e) {
 
 }
 
+//  Render chart function creates a bar chart after rounds are complete
+
+function renderChart() {
+  const ctx = document.getElementById('chart').getContext('2d');
+  //label arrays for the chart
+  let itemNames = [];
+  let itemClicks = [];
+  let itemViews = [];
+  for (let i = 0; i < imgArr.length; i++) {
+
+    itemNames.push(imgArr[i].name);
+    itemClicks.push(imgArr[i].clicks);
+    itemViews.push(imgArr[i].views);
+  }
+
+  const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: itemNames,
+      datasets: [{
+        label: '# of clicks',
+        data: itemClicks,
+        backgroundColor: '#DEEB4D',
+        borderColor: '#DEEB4D',
+        borderWidth: 1
+      },
+      {
+        label: '# of views',
+        data: itemViews,
+        backgroundColor:'#346B9E',
+        borderColor:'#346B9E',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
 // Listener for the click event on button to show results
 function handleButtonClicks() {
-  // Display all the results for click with number of click, views and the percentage it was clicked when it was viewed.
-  let seeResults = document.getElementById('see-results');
+
   if (likes === ROUNDS) {
-    for (let i = 0; i < imgArr.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${imgArr[i].name} viewed ${imgArr[i].views} times and liked ${imgArr[i].clicks} times`;
-      seeResults.appendChild(li);
-    }
+    renderChart();
   }
 }
 
+//Event listeners for clicks:
 mainCanvas.addEventListener('click', handleItemClicks);
-
-
 viewResults.addEventListener('click', handleButtonClicks);
-
-
-
-// Add a button with the text View Results, which when clicked displays the list of all the products followed by the votes received, and number of times seen for each. Example: banana had 3 votes, and was seen 5 times.
-
-// NOTE: Displayed product names should match the file name for the product. Example: the product represented with dog-duck.jpg should be displayed to the user as exactly “dog-duck” when the results are shown.
